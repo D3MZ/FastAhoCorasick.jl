@@ -67,6 +67,10 @@ AhoCorasickILP trades overlapping enumeration, per-pattern keys, and replace/str
 
 Matching is a **latency-bound pointer chase** — `state = next[state + class(byte)]`, each load's address depending on the last. AhoCorasickILP minimizes that load with a **cache-resident DFA** (byte-class alphabet reduction + premultiplied state ids + match-states-first, the same layout as Rust's), then hides its latency with **multi-stream ILP**: `N` independent DFA chains run in one loop over `N` slices so the out-of-order engine keeps several loads in flight — one thread, no SIMD. Splitting stays exact by replaying each seam from the true entering state (verified against a naive reference, even for periodic patterns). The serial kernel is on par with the crate's DFA; the ILP win is a single-thread trick the crate could also adopt.
 
+## Citing
+
+If this package is useful in your work, please cite it — see [`CITATION.bib`](CITATION.bib).
+
 ## License
 
 MIT © Demetrius Michael · `bench/run.sh` and `bench/compare_libraries.jl` reproduce the numbers.
