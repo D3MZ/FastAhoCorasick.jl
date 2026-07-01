@@ -1,0 +1,8 @@
+label,min_ns,gbps,allocs
+Rust aho-corasick 1.1,11252750.0,0.5332,3
+Julia serial (1 stream),13024625.0,0.4607,0
+Julia ILP (2 streams),6510125.0,0.9217,0
+Julia ILP (3 streams),4364417.0,1.3748,0
+Julia ILP (4 streams),3392250.0,1.7688,0
+Julia ILP (6 streams),2517000.0,2.3838,0
+Julia ILP (8 streams),2330667.0,2.5744,0
