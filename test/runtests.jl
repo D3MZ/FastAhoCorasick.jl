@@ -80,6 +80,28 @@ end
     end
 end
 
+@testset "all public method forms and stream widths" begin
+    a = build(["trading", "market", "the"])
+    s = "the trading market and the market"
+    want = count_matches_serial(a, s)
+    bytes = Vector{UInt8}(codeunits(s))
+    # string, byte-vector, and pointer forms of both counters
+    @test count_matches_serial(a, bytes) == want
+    @test count_matches(a, bytes) == want
+    @test count_matches(a, s) == want
+    GC.@preserve bytes begin
+        @test count_matches_serial(a, pointer(bytes), length(bytes)) == want
+        @test count_matches(a, pointer(bytes), length(bytes), Val(3)) == want
+    end
+    # every streams branch in the keyword dispatch (1 -> serial, listed values, and a fallback)
+    for st in (1, 2, 3, 4, 6, 8, 12, 16, 5, 7, 9, 100)
+        @test count_matches(a, s; streams=st) == want
+    end
+    # weighted byte-vector form
+    w = build(["trading", "market"]; weights=[2.0, 3.0])
+    @test sum_weights(w, bytes) == sum_weights(w, s)
+end
+
 @testset "empty / edge inputs" begin
     a = build(["ab"])
     @test count_matches_serial(a, "") == 0
