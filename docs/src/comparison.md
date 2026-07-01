@@ -70,15 +70,17 @@ byte-level matching, weighted scoring, and orders-of-magnitude more throughput.
 
 ### Throughput (ASCII input, Apple M1 Max, 64 KB)
 
-`AhoCorasick.jl` throws on the multilingual corpus, so this measures ASCII text it can consume:
+`AhoCorasick.jl` throws on the multilingual corpus, so this measures ASCII text it can consume
+(64 KB, all four implementations on the same bytes):
 
 | implementation | min time | throughput | allocations | matches |
 |---|---:|---:|---:|---:|
-| **FastAhoCorasick ILP ×8** | **0.026 ms** | **2,524 MB/s** | **0** | 7,800 |
-| FastAhoCorasick serial | 0.142 ms | 461 MB/s | 0 | 7,800 |
-| AhoCorasick.jl 0.1.1 | 1,478 ms | 0.04 MB/s | 2.1 GB | 7,800 |
+| **FastAhoCorasick ILP ×8** | **0.027 ms** | **2,465 MB/s** | **0** | 7,900 |
+| FastAhoCorasick serial | 0.153 ms | 434 MB/s | 0 | 7,900 |
+| Rust `aho-corasick` 1.1 | 0.226 ms | 293 MB/s | 0 | 7,900 |
+| AhoCorasick.jl 0.1.1 | 2,200 ms | 0.03 MB/s | 2.1 GB | 7,900 |
 
-That is roughly **57,000× faster and allocation-free**. The counts agree here only because
+That is roughly **80,000× faster and allocation-free**. The counts agree here only because
 these keywords do not physically overlap; they diverge when matches overlap (AhoCorasick.jl
 counts every overlapping occurrence, FastAhoCorasick counts non-overlapping like Rust's
 `find_iter`).

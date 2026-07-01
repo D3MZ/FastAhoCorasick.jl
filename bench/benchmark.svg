@@ -1,34 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="940" height="360" font-family="Helvetica,Arial,sans-serif">
-<rect width="940" height="360" fill="white"/>
-<text x="470" y="26" text-anchor="middle" font-size="17" font-weight="bold">FastAhoCorasick.jl vs Rust aho-corasick — match time, 6 MB corpus, Apple M1 Max (single thread)</text>
-<text x="470" y="44" text-anchor="middle" font-size="12" fill="#666">lower is better · all Julia kernels are 0-allocation · counts identical</text>
-<text x="200" y="77.71428571428572" text-anchor="end" font-size="12">Rust aho-corasick 1.1</text>
-<rect x="210" y="61.49142857142857" width="485.0299592758589" height="24.44571428571429" fill="#d1495b" rx="2"/>
-<text x="701.0299592758589" y="77.71428571428572" font-size="12" fill="#333">11.25 ms · 3 alloc</text>
-<text x="200" y="117.14285714285714" text-anchor="end" font-size="12">Julia serial (1 stream)</text>
-<rect x="210" y="100.92" width="561.4035087719299" height="24.44571428571429" fill="#8a8a8a" rx="2"/>
-<text x="777.4035087719299" y="117.14285714285714" font-size="12" fill="#333">13.02 ms · 0 alloc</text>
-<text x="200" y="156.57142857142858" text-anchor="end" font-size="12">Julia ILP (2 streams)</text>
-<rect x="210" y="140.34857142857143" width="280.60746605325375" height="24.44571428571429" fill="#1f7a4d" rx="2"/>
-<text x="496.60746605325375" y="156.57142857142858" font-size="12" fill="#333">6.51 ms · 0 alloc</text>
-<text x="200" y="196.0" text-anchor="end" font-size="12">Julia ILP (3 streams)</text>
-<rect x="210" y="179.77714285714285" width="188.12050385664543" height="24.44571428571429" fill="#1f7a4d" rx="2"/>
-<text x="404.1205038566454" y="196.0" font-size="12" fill="#333">4.36 ms · 0 alloc</text>
-<text x="200" y="235.42857142857144" text-anchor="end" font-size="12">Julia ILP (4 streams)</text>
-<rect x="210" y="219.2057142857143" width="146.2169584638006" height="24.44571428571429" fill="#1f7a4d" rx="2"/>
-<text x="362.2169584638006" y="235.42857142857144" font-size="12" fill="#333">3.39 ms · 0 alloc</text>
-<text x="200" y="274.8571428571429" text-anchor="end" font-size="12">Julia ILP (6 streams)</text>
-<rect x="210" y="258.63428571428574" width="108.49084956986843" height="24.44571428571429" fill="#1f7a4d" rx="2"/>
-<text x="324.49084956986843" y="274.8571428571429" font-size="12" fill="#333">2.52 ms · 0 alloc</text>
-<text x="200" y="314.2857142857143" text-anchor="end" font-size="12">Julia ILP (8 streams)</text>
-<rect x="210" y="298.0628571428571" width="100.45929395886236" height="24.44571428571429" fill="#1f7a4d" rx="2"/>
-<text x="316.45929395886236" y="314.2857142857143" font-size="12" fill="#333">2.33 ms · 0 alloc</text>
-<line x1="210.0" y1="54" x2="210.0" y2="330" stroke="#eee"/>
-<text x="210.0" y="346" text-anchor="middle" font-size="10" fill="#888">0.0 ms</text>
-<line x1="423.3333333333333" y1="54" x2="423.3333333333333" y2="330" stroke="#eee"/>
-<text x="423.3333333333333" y="346" text-anchor="middle" font-size="10" fill="#888">4.9 ms</text>
-<line x1="636.6666666666666" y1="54" x2="636.6666666666666" y2="330" stroke="#eee"/>
-<text x="636.6666666666666" y="346" text-anchor="middle" font-size="10" fill="#888">9.9 ms</text>
-<line x1="850.0" y1="54" x2="850.0" y2="330" stroke="#eee"/>
-<text x="850.0" y="346" text-anchor="middle" font-size="10" fill="#888">14.8 ms</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="340" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif">
+<rect width="940" height="340" fill="white"/>
+<text x="470" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#1a1a1a">Keyword scan time — 64 KB input, single thread, Apple M1 Max</text>
+<text x="470" y="49" text-anchor="middle" font-size="12.5" fill="#777">lower is better · log scale · all three find the same 7,900 matches</text>
+<line x1="250.0" y1="70" x2="250.0" y2="286" stroke="#ececec"/>
+<text x="250.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">0.01</text>
+<line x1="340.0" y1="70" x2="340.0" y2="286" stroke="#ececec"/>
+<text x="340.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">0.1</text>
+<line x1="430.0" y1="70" x2="430.0" y2="286" stroke="#ececec"/>
+<text x="430.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">1</text>
+<line x1="520.0" y1="70" x2="520.0" y2="286" stroke="#ececec"/>
+<text x="520.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">10</text>
+<line x1="610.0" y1="70" x2="610.0" y2="286" stroke="#ececec"/>
+<text x="610.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">100</text>
+<line x1="700.0" y1="70" x2="700.0" y2="286" stroke="#ececec"/>
+<text x="700.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">1000</text>
+<line x1="790.0" y1="70" x2="790.0" y2="286" stroke="#ececec"/>
+<text x="790.0" y="304" text-anchor="middle" font-size="10.5" fill="#999">10000</text>
+<text x="520.0" y="324" text-anchor="middle" font-size="11.5" fill="#666">milliseconds (log scale)</text>
+<rect x="250.0" y="81.88" width="38.677705200216735" height="30.240000000000002" rx="3" fill="#159a56"/>
+<text x="236" y="96.0" text-anchor="end" font-size="13" font-weight="600" fill="#222">FastAhoCorasick — ILP ×8</text>
+<text x="236" y="111.0" text-anchor="end" font-size="10.5" fill="#999">Julia · this package</text>
+<text x="296.67770520021674" y="101.0" font-size="12" font-weight="600" fill="#333">0.027 ms</text>
+<text x="296.67770520021674" y="115.0" font-size="10" fill="#aaa">baseline</text>
+<rect x="250.0" y="135.88" width="106.62222877358391" height="30.240000000000002" rx="3" fill="#8fd0ac"/>
+<text x="236" y="150.0" text-anchor="end" font-size="13" font-weight="600" fill="#222">FastAhoCorasick — serial</text>
+<text x="236" y="165.0" text-anchor="end" font-size="10.5" fill="#999">Julia · this package</text>
+<text x="364.6222287735839" y="155.0" font-size="12" font-weight="600" fill="#333">0.153 ms</text>
+<text x="364.6222287735839" y="169.0" font-size="10" fill="#aaa">5.7× slower</text>
+<rect x="250.0" y="189.88" width="121.92160985592557" height="30.240000000000002" rx="3" fill="#c46a3f"/>
+<text x="236" y="204.0" text-anchor="end" font-size="13" font-weight="600" fill="#222">Rust  aho-corasick 1.1</text>
+<text x="236" y="219.0" text-anchor="end" font-size="10.5" fill="#999">Rust crate</text>
+<text x="379.92160985592557" y="209.0" font-size="12" font-weight="600" fill="#333">0.226 ms</text>
+<text x="379.92160985592557" y="223.0" font-size="10" fill="#aaa">8.4× slower</text>
+<rect x="250.0" y="243.88" width="480.8180412739987" height="30.240000000000002" rx="3" fill="#9aa0a6"/>
+<text x="236" y="258.0" text-anchor="end" font-size="13" font-weight="600" fill="#222">AhoCorasick.jl 0.1.1</text>
+<text x="236" y="273.0" text-anchor="end" font-size="10.5" fill="#999">Julia · registry (O(n²))</text>
+<text x="738.8180412739987" y="263.0" font-size="12" font-weight="600" fill="#333">2200 ms</text>
+<text x="738.8180412739987" y="277.0" font-size="10" fill="#aaa">81784.0× slower</text>
 </svg>
